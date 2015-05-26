@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ObserverPattern
+{
+    public class StandardDisplay : IWeatherObserver<WeatherData>
+    {
+        public WeatherStation WeatherStation { get; set; }
+        public WeatherData WeatherData { get; set; }
+
+        public StandardDisplay(WeatherStation station)
+        {
+            WeatherStation = station;
+            WeatherStation.Subscribe(this);
+        }
+
+        public void DisplayUpdatedMeasurments(object sender, WeatherDataEventArgs eventArgs)
+        {
+            Console.WriteLine("{0} notifies StandardDisplay that weather data has changed. New measurments:", sender);
+            Console.WriteLine("Temperature: {0}, humidity: {1}, pressure {2}", eventArgs.WeatherData.Temperature, eventArgs.WeatherData.Humidity, eventArgs.WeatherData.Pressure);
+        }
+    }
+}
