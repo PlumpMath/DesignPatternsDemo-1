@@ -17,12 +17,13 @@ namespace ObserverPattern
             WeatherStation.Subscribe(this);
         }
 
-        public void DisplayUpdatedMeasurments(object sender, WeatherDataEventArgs eventArgs)
+        public void DisplayUpdatedMeasurments(object sender, EventArgs eventArgs)
         {
+            WeatherDataEventArgs weatherEventArgs = (WeatherDataEventArgs)eventArgs;
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("{0} notifies FancyDisplay that weather data has changed. New measurments:", sender);
-            Console.WriteLine("Temperature: {0}, humidity: {1}, pressure {2}, rain quantity {3} cm^3", eventArgs.WeatherData.Temperature,
-                eventArgs.WeatherData.Humidity, eventArgs.WeatherData.Pressure, eventArgs.WeatherData.RainQuantity);
+            Console.WriteLine("Temperature: {0}, humidity: {1}, pressure {2}, rain quantity {3} cm^3", weatherEventArgs.WeatherData.Temperature,
+                weatherEventArgs.WeatherData.Humidity, weatherEventArgs.WeatherData.Pressure, weatherEventArgs.WeatherData.RainQuantity);
             Console.ResetColor();
         }
     }

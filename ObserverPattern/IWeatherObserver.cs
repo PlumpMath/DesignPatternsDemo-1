@@ -8,6 +8,6 @@ namespace ObserverPattern
 {
     public interface IWeatherObserver<T> where T : WeatherData
     {
-        void DisplayUpdatedMeasurments(object sender, WeatherDataEventArgs eventArgs);
+        void DisplayUpdatedMeasurments(object sender, EventArgs eventArgs);
     }
 }
