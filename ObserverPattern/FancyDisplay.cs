@@ -8,10 +8,10 @@ namespace ObserverPattern
 {
     public class FancyDisplay : IWeatherObserver<WeatherData>
     {
-        public WeatherStation WeatherStation { get; set; }
+        public IWeatherObservable WeatherStation { get; set; }
         public WeatherData WeatherData { get; set; }
 
-        public FancyDisplay(WeatherStation station)
+        public FancyDisplay(IWeatherObservable station)
         {
             WeatherStation = station;
             WeatherStation.Subscribe(this);

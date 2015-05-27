@@ -9,10 +9,10 @@ namespace ObserverPattern
 {
     public class StandardDisplay : IWeatherObserver<WeatherData>
     {
-        public WeatherStation WeatherStation { get; set; }
+        public IWeatherObservable WeatherStation { get; set; }
         public WeatherData WeatherData { get; set; }
 
-        public StandardDisplay(WeatherStation station)
+        public StandardDisplay(IWeatherObservable station)
         {
             WeatherStation = station;
             WeatherStation.Subscribe(this);

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ObserverPattern
 {
-    public class WeatherStation
+    public class WeatherStation : IWeatherObservable
     {
         private event EventHandler<WeatherDataEventArgs> MeasurmentsChanged;
 
@@ -47,14 +47,14 @@ namespace ObserverPattern
             }
         }
 
-        public void SetMeasurments(float temperature, float humidity, float pressure, float rain)
+        public void SetMeasurments(WeatherData weatherData)
         {
-            this.Temperature = temperature;
-            this.Humidity = humidity;
-            this.Pressure = pressure;
-            this.RainQuantity = rain;
+            this.Temperature = weatherData.Temperature;
+            this.Humidity = weatherData.Humidity;
+            this.Pressure = weatherData.Pressure;
+            this.RainQuantity = weatherData.RainQuantity;
 
-            OnMeasurementChanged(new WeatherDataEventArgs(){ChangedOn = DateTime.Now, WeatherData = new WeatherData(){Humidity = humidity, Pressure = pressure, Temperature = temperature, RainQuantity = rain}});
+            OnMeasurementChanged(new WeatherDataEventArgs(){ChangedOn = DateTime.Now, WeatherData = new WeatherData(){Humidity = Humidity, Pressure = Pressure, Temperature = Temperature, RainQuantity = RainQuantity}});
         }
 
     }

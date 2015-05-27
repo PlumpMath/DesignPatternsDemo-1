@@ -10,15 +10,15 @@ namespace ObserverPattern
     {
         static void Main(string[] args)
         {
-            WeatherStation station = new WeatherStation();
+            IWeatherObservable station = new WeatherStation();
             StandardDisplay weatherDisplay = new StandardDisplay(station);
             FancyDisplay fancyWeatherDisplay = new FancyDisplay(station);
 
-            station.SetMeasurments(43,200,36, 6);
+            station.SetMeasurments(new WeatherData(){Humidity = 69, Pressure = 90, RainQuantity = 46, Temperature = 28});
             station.Unsubscribe(fancyWeatherDisplay);
             Console.WriteLine("Fancy display unsubscribed");
 
-            station.SetMeasurments(40, 213, 60, 9);
+            station.SetMeasurments(new WeatherData() { Humidity = 60, Pressure = 99, RainQuantity = 11, Temperature = 26 });
             
         }
     }
