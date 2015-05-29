@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ObserverPattern.Interfaces;
 
 namespace ObserverPattern
 {
@@ -23,6 +24,12 @@ namespace ObserverPattern
             WeatherDataEventArgs weatherEventArgs = (WeatherDataEventArgs)eventArgs;
             Console.WriteLine("{0} notifies StandardDisplay that weather data has changed. New measurments:", sender);
             Console.WriteLine("Temperature: {0}, humidity: {1}, pressure {2}", weatherEventArgs.WeatherData.Temperature, weatherEventArgs.WeatherData.Humidity, weatherEventArgs.WeatherData.Pressure);
+        }
+        
+        public void GetWeatherData()
+        {
+            WeatherData data = WeatherStation.GetMeasurments();
+            Console.WriteLine("Requested manually: temperature: {0}, humidity: {1}, pressure {2}", data.Temperature, data.Humidity, data.Pressure);
         }
     }
 }

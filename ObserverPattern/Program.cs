@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ObserverPattern.Interfaces;
 
 namespace ObserverPattern
 {
@@ -19,7 +20,7 @@ namespace ObserverPattern
             Console.WriteLine("Fancy display unsubscribed");
 
             station.SetMeasurments(new WeatherData() { Humidity = 60, Pressure = 99, RainQuantity = 11, Temperature = 26 });
-            
+            fancyWeatherDisplay.GetWeatherData();
         }
     }
 }

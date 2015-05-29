@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ObserverPattern.Interfaces;
 
 namespace ObserverPattern
 {
@@ -24,6 +25,14 @@ namespace ObserverPattern
             Console.WriteLine("{0} notifies FancyDisplay that weather data has changed. New measurments:", sender);
             Console.WriteLine("Temperature: {0}, humidity: {1}, pressure {2}, rain quantity {3} cm^3", weatherEventArgs.WeatherData.Temperature,
                 weatherEventArgs.WeatherData.Humidity, weatherEventArgs.WeatherData.Pressure, weatherEventArgs.WeatherData.RainQuantity);
+            Console.ResetColor();
+        }
+
+        public void GetWeatherData()
+        {
+            WeatherData data = WeatherStation.GetMeasurments();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Requested manually: temperature: {0}, humidity: {1}, pressure {2}, rain {3}", data.Temperature, data.Humidity, data.Pressure, data.RainQuantity);
             Console.ResetColor();
         }
     }
